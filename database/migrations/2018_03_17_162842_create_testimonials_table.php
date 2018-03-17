@@ -20,6 +20,7 @@ class CreateTestimonialsTable extends Migration
             $table->string('company')->default('¡Un gran amigo!');
             $table->text('content');
             $table->boolean('approved')->default(false);
+            $table->foreign('author_id')->references('id')->on('users');
 
             $table->timestamps();
         });

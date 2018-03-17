@@ -14,10 +14,14 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\User::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
+	return [
+		'name' => 'Santiago Pereira',
+		'email' => 'santiagoapp@gmail.com',
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'about' => 'Proximo ingeniero industrial, emprendedor y desarrollador de proyectos para la industria de la tecnología, información y gestión de conocimiento',
+        'description' => 'Proximo ingeniero industrial, emprendedor y desarrollador de proyectos para la industria de la tecnología, información y gestión de conocimiento',
+        'phone' => '(+57) 305 784 2456',
+        'img_path' => '',
         'remember_token' => str_random(10),
     ];
 });
