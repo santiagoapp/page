@@ -15,6 +15,12 @@ class CreateTestimonialsTable extends Migration
     {
         Schema::create('testimonials', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('author_id')->unsigned();
+            $table->string('company')->default('¡Un gran amigo!');
+            $table->text('content');
+            $table->boolean('approved')->default(false);
+
             $table->timestamps();
         });
     }

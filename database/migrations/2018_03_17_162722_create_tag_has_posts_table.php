@@ -15,6 +15,12 @@ class CreateTagHasPostsTable extends Migration
     {
         Schema::create('tag_has_posts', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('post_id')->unsigned();
+            $table->integer('tag_id')->unsigned();
+            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('tag_id')->references('id')->on('tags');
+
             $table->timestamps();
         });
     }
