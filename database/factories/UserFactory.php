@@ -21,7 +21,6 @@ $factory->define(App\User::class, function (Faker $faker) {
         'about' => 'Proximo ingeniero industrial, emprendedor y desarrollador de proyectos para la industria de la tecnología, información y gestión de conocimiento',
         'description' => 'Proximo ingeniero industrial, emprendedor y desarrollador de proyectos para la industria de la tecnología, información y gestión de conocimiento',
         'phone' => '(+57) 305 784 2456',
-        'img_path' => '',
-        'remember_token' => str_random(10),
+        'remember_token' => str_random(10)
     ];
 });

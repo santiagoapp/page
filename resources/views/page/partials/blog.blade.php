@@ -5,7 +5,7 @@
 
                <div class="col-md-12 col-sm-12">
                     <div class="section-title">
-                         <h2>Our Blog</h2>
+                         <h2>Mi Blog</h2>
                          <span class="line-bar">...</span>
                     </div>
                </div>

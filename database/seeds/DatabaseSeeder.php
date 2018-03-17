@@ -11,9 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-        	UsersTableSeeder::class,
-        	UsersTableSeeder::class,
-        ]);
+        if ($this->command->confirm('¿Desea refrescar la migración antes de alimentar la base de datos?'))
+        {
+            $this->command->call('migrate:refresh');
+            $this->command->warn("Datos eliminados, comenzando con una base de datos limpia.");
+        }
     }
 }

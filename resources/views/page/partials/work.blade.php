@@ -5,67 +5,25 @@
 
                <div class="col-md-12 col-sm-12">
                     <div class="section-title">
-                         <h2>Our work</h2>
+                         <h2>Proyectos</h2>
                          <span class="line-bar">...</span>
                     </div>
                </div>
-
-               <div class="col-md-3 col-sm-6">
+               @foreach($images as $image) 
+               <div class="col-md-4 col-sm-6" style="margin-bottom: 10px;">
                     <!-- WORK THUMB -->
                     <div class="work-thumb">
-                         <a href="images/work-image1.jpg" class="image-popup">
-                              <img src="images/work-image1.jpg" class="img-responsive" alt="Work">
+                         <a href="{{$image->path}}" class="image-popup">
+                              <img src="{{$image->path}}" class="img-responsive" alt="{{$image->alt}}">
 
                               <div class="work-info">
-                                   <h3>Clean &amp; Minimal</h3>
-                                   <small>Product Design</small>
+                                   <h3>{{$image->name}}</h3>
+                                   <small>{{$image->description}}</small>
                               </div>
                          </a>
                     </div>
                </div>
-
-               <div class="col-md-3 col-sm-6">
-                    <!-- WORK THUMB -->
-                    <div class="work-thumb">
-                         <a href="images/work-image2.jpg" class="image-popup">
-                              <img src="images/work-image2.jpg" class="img-responsive" alt="Work">
-
-                              <div class="work-info">
-                                   <h3>Studio Bag</h3>
-                                   <small>Branding</small>
-                              </div>
-                         </a>
-                    </div>
-               </div>
-
-               <div class="col-md-3 col-sm-6">
-                    <!-- WORK THUMB -->
-                    <div class="work-thumb">
-                         <a href="images/work-image3.jpg" class="image-popup">
-                              <img src="images/work-image3.jpg" class="img-responsive" alt="Work">
-
-                              <div class="work-info">
-                                   <h3>Frame Design</h3>
-                                   <small>Photography</small>
-                              </div>
-                         </a>
-                    </div>
-               </div>
-
-               <div class="col-md-3 col-sm-6">
-                    <!-- WORK THUMB -->
-                    <div class="work-thumb">
-                         <a href="images/work-image4.jpg" class="image-popup">
-                              <img src="images/work-image4.jpg" class="img-responsive" alt="Work">
-
-                              <div class="work-info">
-                                   <h3>Paint Work</h3>
-                                   <small>Art, Design</small>
-                              </div>
-                         </a>
-                    </div>
-               </div>
-
+               @endforeach
           </div>
      </div>
 </section>
