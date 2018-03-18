@@ -39,8 +39,4 @@ class User extends Authenticatable
     {
         $this->hasOne('App\Media');
     }
-    public function socialNetwork()
-    {
-        $this->hasMany('App\SocialNetwork');
-    }
 }

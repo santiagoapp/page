@@ -65,4 +65,12 @@
       });
     });  
 
+    //AUTOTYPE
+    $(function() {
+      var typed = new Typed('.auto-type', {
+        stringsElement: '#typed-strings',
+        typeSpeed: 100
+      });
+    });  
+
   })(jQuery);

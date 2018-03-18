@@ -9,8 +9,8 @@
                               <h2>Deja que me presente</h2>
                               <span class="line-bar">...</span>
                          </div>
-                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
-                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                         <p>Emprendedor, apasionado por la tecnología y la gestión de la información aplicada a las empresas.</p>
+                         <p>Ingeniero en formación con conocimiento en diversas herramientas para la optimización de procesos productivos dentro de las organizaciones, CEO de <a href="https://www.modulares-multimueble.com">Modulares Multimueble</a> y admirador del arte.</p>
                     </div>
                </div>
 

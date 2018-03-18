@@ -4,6 +4,7 @@
 <script src="{{asset('vendor/hydro-master/js/jquery.stellar.min.js')}}"></script>
 <script src="{{asset('vendor/hydro-master/js/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{asset('vendor/hydro-master/js/smoothscroll.js')}}"></script>
+<script src="{{asset('vendor/typed.js-master/lib/typed.min.js')}}"></script>
 <script src="{{asset('vendor/hydro-master/js/custom.js')}}"></script>
 
 </body>

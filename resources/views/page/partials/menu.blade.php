@@ -10,24 +10,24 @@
                </button>
 
                <!-- lOGO TEXT HERE -->
-               <a href="index.html" class="navbar-brand">Hydro</a>
+               <a href="index.html" class="navbar-brand">SantiagoAPP</a>
           </div>
 
           <!-- MENU LINKS -->
           <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-nav-first">
-                    <li><a href="#home" class="smoothScroll">Home</a></li>
-                    <li><a href="#about" class="smoothScroll">About</a></li>
+                    <li><a href="#home" class="smoothScroll">Inicio</a></li>
+                    <li><a href="#about" class="smoothScroll">Sobre mi</a></li>
                     <li><a href="#blog" class="smoothScroll">Blog</a></li>
-                    <li><a href="#work" class="smoothScroll">Our Work</a></li>
-                    <li><a href="#contact" class="smoothScroll">Contacts</a></li>
+                    <li><a href="#work" class="smoothScroll">Proyectos</a></li>
+                    <li><a href="#contact" class="smoothScroll">Contacto</a></li>
                </ul>
 
                <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                     <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                    <li class="section-btn"><a href="#" data-toggle="modal" data-target="#modal-form">Sign in / Join</a></li>
+                    <li class="section-btn"><a href="#" data-toggle="modal" data-target="#modal-form">Suscribete</a></li>
                </ul>
           </div>
 

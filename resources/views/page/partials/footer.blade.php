@@ -3,53 +3,46 @@
      <div class="container">
           <div class="row">
 
-               <div class="col-md-5 col-sm-12">
+               <div class="col-md-6 col-sm-12">
                     <div class="footer-thumb footer-info"> 
-                         <h2>Hydro Company</h2>
-                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                         <h2>¿Quién Soy?</h2>
+                         <p>Emprendedor, apasionado por la tecnología y la gestión de la información aplicada a las empresas.</p>
+                         <p>Ingeniero en formación con conocimiento en diversas herramientas para la optimización de procesos productivos dentro de las organizaciones, CEO de Modulares Multimueble y admirador del arte.</p>
                     </div>
                </div>
 
-               <div class="col-md-2 col-sm-4"> 
+               <div class="col-md-3 col-sm-4"> 
                     <div class="footer-thumb"> 
-                         <h2>Company</h2>
+                         <h2>SantiagoAPP</h2>
                          <ul class="footer-link">
-                              <li><a href="#">About Us</a></li>
-                              <li><a href="#">Join our team</a></li>
-                              <li><a href="#">Read Blog</a></li>
-                              <li><a href="#">Press</a></li>
-                         </ul>
-                    </div>
-               </div>
-
-               <div class="col-md-2 col-sm-4"> 
-                    <div class="footer-thumb"> 
-                         <h2>Services</h2>
-                         <ul class="footer-link">
-                              <li><a href="#">Pricing</a></li>
-                              <li><a href="#">Documentation</a></li>
-                              <li><a href="#">Support</a></li>
+                              <li><a href="#about">Acerca de</a></li>
+                              <li><a href="#">Leer Blog</a></li>
+                              <li><a href="#">Ver Proyectos</a></li>
                          </ul>
                     </div>
                </div>
 
                <div class="col-md-3 col-sm-4"> 
                     <div class="footer-thumb"> 
-                         <h2>Find us</h2>
-                         <p>123 Grand Rama IX, <br> Krung Thep Maha Nakhon 10400</p>
+                         <h2>Mis WEBs</h2>
+                         <ul class="footer-link">
+                              <li><a href="https://www.modulares-multimueble.com">Modulares Multimueble</a></li>
+                              <li><a href="https://www.carismas.com">Carismas</a></li>
+                         </ul>
                     </div>
-               </div>                    
+               </div>
+
 
                <div class="col-md-12 col-sm-12">
                     <div class="footer-bottom">
                          <div class="col-md-6 col-sm-5">
                               <div class="copyright-text"> 
-                                   <p>Copyright &copy; 2017 Your Company</p>
+                                   <p>Copyright &copy; 2018 SantiagoAPP</p>
                               </div>
                          </div>
                          <div class="col-md-6 col-sm-7">
                               <div class="phone-contact"> 
-                                   <p>Call us <span>(+66) 010-020-0340</span></p>
+                                   <p>Llámame <span>(+57) 304-784-2456</span></p>
                               </div>
                               <ul class="social-icon">
                                    <li><a href="https://www.facebook.com/templatemo" class="fa fa-facebook-square" attr="facebook icon"></a></li>

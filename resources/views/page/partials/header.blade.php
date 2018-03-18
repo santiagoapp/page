@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-	<title>SANTIAGOAPP</title>
+	<title>Santiagoapp</title>
 <!-- 
 Hydro Template 
 http://www.templatemo.com/tm-509-hydro
