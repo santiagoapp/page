@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Subscriber;
 use Illuminate\Http\Request;
 
-class SubscriberController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class SubscriberController extends Controller
      */
     public function index()
     {
-        $subscriptores = Subscriber::all();
-        return view('dashboard.subscriber',compact('subscriptores'));
+        return view('dashboard.perfil');
     }
 
     /**
@@ -36,20 +34,16 @@ class SubscriberController extends Controller
      */
     public function store(Request $request)
     {
-        $subscriber = New Subscriber;
-        $subscriber->name = $request->name;
-        $subscriber->email = $request->email;
-        $respuesta = $subscriber->save() ? 1 : 0;
-        return $respuesta;
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Subscriber  $subscriber
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Subscriber $subscriber)
+    public function show($id)
     {
         //
     }
@@ -57,10 +51,10 @@ class SubscriberController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Subscriber  $subscriber
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subscriber $subscriber)
+    public function edit($id)
     {
         //
     }
@@ -69,10 +63,10 @@ class SubscriberController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Subscriber  $subscriber
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subscriber $subscriber)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -80,20 +74,11 @@ class SubscriberController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Subscriber  $subscriber
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function editar(Request $request)
+    public function destroy($id)
     {
-        $subscriber = Subscriber::findOrFail($request->id);
-
-        // $respuesta = $subscriber->delete() ? 1 : 0;
-        return $respuesta;
-    }
-    public function eliminar(Request $request)
-    {
-        $subscriber = Subscriber::findOrFail($request->id);
-        $respuesta = $subscriber->delete() ? 1 : 0;
-        return $respuesta;
+        //
     }
 }

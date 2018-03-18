@@ -74,4 +74,6 @@
 @section('js')
 
 <script src="{{asset('vendor/adminlte/dist/js/pages/dashboard.js')}}"></script>
+
+
 @stop
