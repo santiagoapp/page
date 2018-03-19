@@ -14,7 +14,8 @@ class MediaController extends Controller
      */
     public function index()
     {
-        //
+        $imagenes = Media::all();
+        return view('dashboard.media',compact('imagenes'));
     }
 
     /**

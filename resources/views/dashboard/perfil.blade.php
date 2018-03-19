@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<h1>Perfil</h1>
+<h1>Perfíl</h1>
 @stop
 
 @section('content')
@@ -18,70 +18,33 @@
 			<div class="box-body box-profile">
 				<img class="profile-user-img img-responsive img-circle" src="{{asset('vendor/adminlte/dist/img/avatar.png')}}" alt="User profile picture">
 
-				<h3 class="profile-username text-center">Nina Mcintire</h3>
+				<h3 class="profile-username text-center">Santiago Pereira</h3>
 
-				<p class="text-muted text-center">Software Engineer</p>
+				<p class="text-muted text-center">Ingeniero Industrial</p>
 				<hr>
-				<!-- form start -->
-				<form role="form">
-					<div class="box-body">
+				<div class="box-body">
+					<!-- form start -->
+					<form role="form" class="redes-sociales">
+						@foreach($redesSociales as $redsocial)
+						<input type="hidden" id="id-{{$redsocial->id}}" name="id-{{$redsocial->id}}">
 						<div class="form-group">
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" id="facebook-checkbox">
-									<span class="fa fa-facebook-official"></span>
-									Facebook
+									<input type="checkbox" name="{{$redsocial->name}}-checkbox" id="{{$redsocial->name}}-checkbox">
+									<span class="fa {{$redsocial->icon}}"></span>
+									{{$redsocial->name}}
 								</label>
-								<input type="text" class="form-control" id="facebook-url" placeholder="URL">
+								<input type="text" class="form-control" name="{{$redsocial->name}}-url" id="{{$redsocial->name}}-url" placeholder="URL">
 							</div>
 						</div>
-						<div class="form-group">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" id="twitter-checkbox">
-									<span class="fa fa-twitter"></span>
-									Twitter
-								</label>
-								<input type="text" class="form-control" id="twitter-url" placeholder="URL">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" id="github-checkbox">
-									<span class="fa fa-github"></span>
-									Github
-								</label>
-								<input type="text" class="form-control" id="github-url" placeholder="URL">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" id="youtube-checkbox">
-									<span class="fa fa-youtube-play"></span>
-									Youtube
-								</label>
-								<input type="text" class="form-control" id="youtube-url" placeholder="URL">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" id="instagram-checkbox">
-									<span class="fa fa-instagram"></span>
-									Instagram
-								</label>
-								<input type="text" class="form-control" id="instagram-url" placeholder="URL">
-							</div>
-						</div>
-					</div>
-					<!-- /.box-body -->
+						@endforeach
+					</form>
+				</div>
+				<!-- /.box-body -->
 
-					<div class="box-footer">
-						<button type="submit" class="btn btn-primary">Submit</button>
-					</div>
-				</form>
+				<div class="box-footer">
+					<button type="button" class="btn btn-primary">Actualizar</button>
+				</div>
 
 			</div>
 			<!-- /.box-body -->
@@ -104,32 +67,32 @@
 			<div class="box-body">
 				<form class="form-horizontal">
 					<div class="form-group">
-						<label for="inputName" class="col-sm-2 control-label">Nombre</label>
+						<label for="inputName" class="col-sm-1 control-label">Nombre</label>
 
-						<div class="col-sm-10">
+						<div class="col-sm-11">
 							<input type="name" class="form-control" id="name" placeholder="Nombre">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="email" class="col-sm-2 control-label">Correo</label>
+						<label for="email" class="col-sm-1 control-label">Correo</label>
 
-						<div class="col-sm-10">
+						<div class="col-sm-11">
 							<input type="email" class="form-control" id="email" placeholder="Correo Electrónico">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="skills" class="col-sm-2 control-label">Skills</label>
+						<label for="skills" class="col-sm-1 control-label">Skills</label>
 
-						<div class="col-sm-10">
+						<div class="col-sm-11">
 							<input type="text" class="form-control" id="skills" name="skills" placeholder="Skills">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="experience" class="col-sm-2 control-label">Sobre mi</label>
+						<label for="about" class="col-sm-1 control-label">Sobre mi</label>
 
-						<div class="col-sm-10">
-							<textarea class="textarea" placeholder="Place some text here"
-							style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+						<div class="col-sm-11">
+							<textarea class="textarea" name="about" id="about" placeholder="Contenido..."
+							style="width: 100%; height: 158px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -158,34 +121,34 @@
 
 @section('js')
 
-<script src="{{asset('vendor/adminlte/dist/js/pages/dashboard.js')}}"></script>
 
 <script>
 	$(function(){
 		//bootstrap WYSIHTML5 - text editor
-		$('.textarea').wysihtml5()
+		$('.textarea').wysihtml5({
+			"font-styles": true, 
+			"emphasis": true, 
+			"lists": true, 
+			"html": true, 
+			"link": true, 
+			"image": false, 
+			"color": true 
+		});
+		@foreach($redesSociales as $redsocial)
+		
+		@if($redsocial->actived)
+		$("#{{$redsocial->name}}-checkbox").prop('checked',true)
+		$("#{{$redsocial->name}}-url").show();
+		@else
+		$("#{{$redsocial->name}}-checkbox").prop('checked',false)
+		$("#{{$redsocial->name}}-url").hide();		
+		@endif
+		$("#{{$redsocial->name}}-checkbox").click(function(){
+			$("#{{$redsocial->name}}-url").toggle();
+		});
 
-		$("#facebook-url").hide();
-		$("#twitter-url").hide();
-		$("#github-url").hide();
-		$("#youtube-url").hide();
-		$("#instagram-url").hide();
+		@endforeach
 
-		$("#facebook-checkbox").click(function(){
-			$("#facebook-url").toggle();
-		});
-		$("#twitter-checkbox").click(function(){
-			$("#twitter-url").toggle();
-		});
-		$("#github-checkbox").click(function(){
-			$("#github-url").toggle();
-		});
-		$("#youtube-checkbox").click(function(){
-			$("#youtube-url").toggle();
-		});
-		$("#instagram-checkbox").click(function(){
-			$("#instagram-url").toggle();
-		});
 	});
 
 

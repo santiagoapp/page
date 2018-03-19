@@ -24,9 +24,11 @@
                </ul>
 
                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    @foreach($redesSociales as $redSocial)
+                    @if($redSocial->actived)
+                    <li><a href="{{$redSocial->url}}"><i class="fa {{$redSocial->icon}}"></i></a></li>
+                    @endif
+                    @endforeach
                     <li class="section-btn"><a href="#" data-toggle="modal" data-target="#modal-form">Suscribete</a></li>
                </ul>
           </div>

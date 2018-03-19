@@ -72,5 +72,6 @@
         typeSpeed: 100
       });
     });  
-
+    
+    
   })(jQuery);

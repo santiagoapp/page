@@ -17,8 +17,9 @@ class CreateSocialNetworksTable extends Migration
             $table->increments('id');
 
             $table->string('name');
-            $table->string('icono');
-            $table->string('url');
+            $table->string('icon');
+            $table->string('url')->nullable();
+            $table->boolean('actived')->default(true);
             
             $table->timestamps();
         });

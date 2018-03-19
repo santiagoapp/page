@@ -10,3 +10,9 @@
 @include('page.partials.footer')
 @include('page.partials.subscription')
 @include('page.partials.scripts')
+<script>
+	$(function(){
+		var asd = '{{url("img/home-bg.jpg")}}'
+		$('#home').css({'background':'url('+ asd +')'})
+	});
+</script>

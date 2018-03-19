@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Skill;
+use App\Media;
 use App\SocialNetwork;
+use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +16,10 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        $skills = Skill::all();
         $redesSociales = SocialNetwork::all();
-        return view('dashboard.perfil', compact('redesSociales'));
-    }
-    public function actualizarRedes(Request $request)
-    {
-
-        $tag = SocialNetwork::findOrFail($request->id);
-        $tag->name = $request->name;
-        $tag->slug = $request->slug;
-        $tag->save();
-        return response()->json($tag);
+        $images = Media::paginate(6);
+        return view('page.blog',compact('skills','images','redesSociales'));
     }
 
     /**
@@ -92,5 +87,4 @@ class ProfileController extends Controller
     {
         //
     }
-
 }

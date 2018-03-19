@@ -18,6 +18,9 @@ class CreateAboutsTable extends Migration
 
             $table->string('title');
             $table->text('content');
+            $table->text('about');
+            $table->string('email');
+            $table->string('phone')->nullable();
 
             $table->timestamps();
         });
