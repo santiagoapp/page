@@ -25,6 +25,9 @@ Route::post('/admin/etiquetas/eliminar', 'TagController@eliminar');
 Route::post('/admin/etiquetas/editar', 'TagController@editarRegistro');
 
 Route::get('/admin/media', 'MediaController@index');
+Route::post('/admin/media/agregar', 'MediaController@subirImagen');
+Route::post('/admin/media/eliminar', 'MediaController@eliminar');
+Route::post('/admin/media/editar', 'MediaController@editarImagen');
 
 Route::get('/admin/perfil', 'ProfileController@index');
 
