@@ -42,7 +42,7 @@
 						<!-- /.box-header -->
 						<div class="box-body" style="height: 250px;">
 							<a href="#" class="modals" name="{{$imagen->id}}">
-								<img id="img-{{$imagen->id}}" src="{{asset($imagen->path)}}" style="width: 100%; margin-bottom: 25px; max-height: 250px;" alt="{{$imagen->alt}}">
+								<img id="img-{{$imagen->id}}" src="{{asset($imagen->path)}}" style="width: 100%; margin-bottom: 25px; max-height: 220px;" alt="{{$imagen->alt}}">
 							</a>
 						</div>
 						<!-- /.box-body -->

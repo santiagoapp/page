@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
 
             $table->integer('author_id')->unsigned();
             $table->integer('image_id')->nullable()->unsigned();
+            $table->string('url_friendly')->nullable();
             $table->string('title');
             $table->string('excerpt')->nullable();
             $table->string('status')->default('Inactivo');

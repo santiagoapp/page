@@ -14,6 +14,10 @@ class Post extends Model
 	{
 		$this->hasOne('App/Media');
 	}
+	public function meta()
+	{
+		$this->hasOne('App/Meta');
+	}
 	public function tags()
 	{
 		$this->hasMany('App/TagHasPost');

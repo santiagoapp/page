@@ -24,6 +24,11 @@ Route::post('/admin/etiquetas/agregar', 'TagController@agregarRegistro');
 Route::post('/admin/etiquetas/eliminar', 'TagController@eliminar');
 Route::post('/admin/etiquetas/editar', 'TagController@editarRegistro');
 
+Route::resource('/admin/entradas', 'PostController');
+Route::post('/admin/entradas/agregar', 'PostController@agregarRegistro');
+Route::post('/admin/entradas/eliminar', 'PostController@eliminar');
+Route::post('/admin/entradas/editar', 'PostController@editarRegistro');
+
 Route::get('/admin/media', 'MediaController@index');
 Route::post('/admin/media/agregar', 'MediaController@subirImagen');
 Route::post('/admin/media/eliminar', 'MediaController@eliminar');

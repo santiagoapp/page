@@ -1,4 +1,4 @@
-@include('page.partials.header')
+@include('page.partials.blog-head')
 @include('page.partials.preloader')
 @include('page.partials.menu')
 @include('page.partials.blog-header')
