@@ -17,7 +17,7 @@
 		<div class="box box-primary">
 			<div class="box-body box-profile">
 				<div class="img_preview">
-					@if(Auth::user()->imagen_id == null)
+					@if(Auth::user()->image_id == null)
 					<img class="profile-user-img img-responsive img-circle" src="{{ asset('img/users/descarga.svg')}}" alt="User profile picture">
 					@else
 					<img class="profile-user-img img-responsive img-circle" src="{{asset(Auth::user()->imagen->path)}}" alt="User profile picture">
@@ -159,8 +159,8 @@
 		});
 		$('.seleccionar').click(function(){
 			$('.img_preview').html('<img class="profile-user-img img-responsive img-circle" src="' + $(this).prop('src') + '" alt="User profile picture">');
-
 			$('#image_id').val($(this).prop('name'));
+			$('#modal').modal('hide');
 		});
 
 		function editarUsuario(){

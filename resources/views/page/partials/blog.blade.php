@@ -14,7 +14,11 @@
                     <!-- BLOG THUMB -->
                     <div class="media blog-thumb">
                          <div class="media-object media-left">
+                              @if($entrada->image_id == null)
+                              <a href="{!! config('app.url') !!}/blog/post/{!! $entrada->id !!}"><img src="{!! asset('img/users/descarga.svg') !!}" class="img-responsive" alt=""></a>
+                              @else
                               <a href="{!! config('app.url') !!}/blog/post/{!! $entrada->id !!}"><img src="{!! asset($entrada->imagen->path) !!}" class="img-responsive" alt="{!! $entrada->imagen->alt !!}"></a>
+                              @endif
                          </div>
                          <div class="media-body blog-info">
                               <small><i class="fa fa-clock-o"></i> {!! $entrada->created_at !!}</small>

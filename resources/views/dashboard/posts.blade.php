@@ -44,7 +44,13 @@
 						@foreach($entradas as $entrada)
 						<tr id="tr-{{$entrada->id}}">
 							<td>{{$entrada->id}}</td>
-							<td><img src="{{asset($entrada->imagen->path)}}" alt="{{$entrada->imagen->alt}}" style="width: 70px; height: 70px;"></td>
+							<td>
+								@if($entrada->image_id == null)
+								<img src="{{asset('img/users/descarga.svg')}}" alt="" style="width: 70px; height: 70px;">
+								@else
+								<img src="{{asset($entrada->imagen->path)}}" alt="{{$entrada->imagen->alt}}" style="width: 70px; height: 70px;">
+								@endif
+							</td>
 							<td>{{$entrada->title}}</td>
 							<td>{{$entrada->autor->name}}</td>
 							<td>{{$entrada->excerpt}}</td>

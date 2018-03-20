@@ -139,9 +139,21 @@ return [
         'BLOG',
         [
             'text' => 'Entradas',
-            'url'  => 'admin/entradas',
             'icon' => 'pencil-square-o',
+            'submenu' => [
+                [
+                    'text' => 'Nueva entrada',
+                    'url'  => 'admin/entradas/create',
+                    'icon' => 'pencil-square-o',
+                ],
+                [
+                    'text' => 'Entradas',
+                    'url'  => 'admin/entradas',
+                    'icon' => 'list',
+                ],
+            ],
         ],
+
         [
             'text' => 'Categorías',
             'url'  => 'admin/categorias',

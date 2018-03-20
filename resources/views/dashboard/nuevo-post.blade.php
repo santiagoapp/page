@@ -9,7 +9,7 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-12">
 		<div class="box">
 			<div class="box-header with-border">
 				<h3 class="box-title">Información General</h3>
@@ -18,27 +18,75 @@
 			<div class="box-body">
 
 				<form id="formulario">
-					<!-- text input -->
-					<div class="form-group">
-						<label>Título</label>
-						<input type="hidden" id="image_id" name="image_id" >
-						<input type="hidden" id="author_id" name="author_id" >
-						<input type="text" class="form-control" id="title" name="title" placeholder="Título ...">
-					</div>
-					<!-- text input -->
-					<div class="form-group">
-						<label>URL SEO Friendly</label>
-						<input type="text" class="form-control" id="url_friendly" name="url_friendly" placeholder="URL ...">
-					</div>
-					<!-- textarea -->
-					<div class="form-group">
-						<label>Resúmen (Excerpt)</label>
-						<textarea class="form-control" id="excerpt" name="excerpt" rows="4" placeholder="Resúmen..."></textarea>
-					</div>
-					<!-- textarea -->
-					<div class="form-group">
-						<label>Contenido</label>
-						<textarea class="form-control" id="content" name="content" rows="3" placeholder="Contenido..."></textarea>
+					<div class="row">
+						<div class="col-md-8">
+							<!-- text input -->
+							<div class="form-group">
+								<label>Título</label>
+								<input type="hidden" id="image_id" name="image_id" >
+								<input type="hidden" id="author_id" name="author_id" >
+								<input type="text" class="form-control" id="title" name="title" placeholder="Título ...">
+							</div>
+						</div>
+						<div class="col-md-4">
+							<!-- Select multiple-->
+							<div class="form-group">
+								<label>Etiquetas</label>
+								<select multiple="multiple" id="etiquetas" name="etiquetas" class="form-control select2" data-placeholder="Seleccionar una etiqueta" style="width: 100%;">
+									@foreach($etiquetas as $etiqueta)
+									<option value="{{$etiqueta->id}}">{{$etiqueta->name}}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<!-- text input -->
+							<div class="form-group">
+								<label>URL SEO Friendly</label>
+								<input type="text" class="form-control" id="url_friendly" name="url_friendly" placeholder="URL ...">
+							</div>
+						</div>
+						<div class="col-md-4">
+							<!-- Select multiple-->
+							<div class="form-group">
+								<label>Categoría</label>
+								<select class="form-control select2" id="categoria" name="categoria" style="width: 100%;">
+									<option></option>
+									@foreach($categorias as $categoria)
+									<option value="{{$categoria->id}}">{{$categoria->name}}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<!-- textarea -->
+							<div class="form-group">
+								<label>Resúmen (Excerpt)</label>
+								<textarea class="form-control" id="excerpt" name="excerpt" rows="4" placeholder="Resúmen..."></textarea>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<!-- text input -->
+							<div class="form-group">
+								<label>Meta Description</label>
+								<textarea class="form-control" id="meta-description" name="meta-description" rows="4" placeholder="Meta descripción"></textarea>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<!-- textarea -->
+							<div class="form-group">
+								<label>Contenido</label>
+								<textarea class="form-control" id="content" name="content" rows="3" placeholder="Contenido..."></textarea>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<!-- Select multiple-->
+							<div class="form-group">
+								<label>Imágen Destacada</label>
+								<div class="img_preview" style="width: 100%;border-style: dashed; border-color: #CECECD; height: 250px"></div>
+							</div>
+							<button type="button" class="btn btn-info btn-flat btn-block mostrar_modal">Seleccionar Imágen</button>
+						</div>
 					</div>
 					<div class="box-footer">
 						<button type="button" class="btn btn-info btn-flat pull-right agregar">Actualizar</button>
@@ -50,109 +98,15 @@
 		</div>
 		<!-- /.box -->
 	</div>
-	<div class="col-md-4">
-		<div class="box">
-			<div class="box-header with-border">
-				<h3 class="box-title">Imagen Destacada</h3>
-			</div>
-			<!-- /.box-header -->
-			<div class="box-body">
 
-				<form role="form">
-					<!-- Select multiple-->
-					<div class="form-group">
-						<label>Imágen Destacada</label>
-						<div class="img_preview" style="width: 100%;border-style: dashed; border-color: #CECECD; height: 280px"></div>
-					</div>
-					<div class="box-footer">
-						<button type="button" class="btn btn-info btn-flat pull-right mostrar_modal">Seleccionar Imágen</button>
-					</div>
-				</form>
-
-			</div>
-			<!-- /.box-body -->
-		</div>
-		<!-- /.box -->
-	</div>
-	<div class="col-md-4">
-		<div class="box">
-			<div class="box-header with-border">
-				<h3 class="box-title">Etiquetas</h3>
-			</div>
-			<!-- /.box-header -->
-			<div class="box-body">
-
-				<form role="form">
-					<!-- Select multiple-->
-					<div class="form-group">
-						<label>Seleccionar etiquetas</label>
-						<select multiple="multiple" class="form-control select2" data-placeholder="Select a State" style="width: 100%;">
-							<option>option 1</option>
-							<option>option 2</option>
-							<option>option 3</option>
-							<option>option 4</option>
-							<option>option 5</option>
-						</select>
-					</div>
-				</form>
-
-			</div>
-			<!-- /.box-body -->
-		</div>
-		<!-- /.box -->
-	</div>
-	<div class="col-md-4">
-		<div class="box">
-			<div class="box-header with-border">
-				<h3 class="box-title">Categoría</h3>
-			</div>
-			<!-- /.box-header -->
-			<div class="box-body">
-
-				<form role="form">
-					<!-- Select multiple-->
-					<div class="form-group">
-						<label>Seleccionar Categoría</label>
-						<select class="form-control select2" style="width: 100%;">
-							<option></option>
-							<option>option 1</option>
-							<option>option 2</option>
-							<option>option 3</option>
-							<option>option 4</option>
-							<option>option 5</option>
-						</select>
-					</div>
-				</form>
-
-			</div>
-			<!-- /.box-body -->
-		</div>
-		<!-- /.box -->
-	</div>
-	<div class="col-md-4">
-		<div class="box">
-			<div class="box-header with-border">
-				<h3 class="box-title">Meta Tags</h3>
-			</div>
-			<!-- /.box-header -->
-			<div class="box-body">
-				<form role="form">
-					<!-- text input -->
-					<div class="form-group">
-						<label>Meta Description</label>
-						<input type="text" class="form-control" placeholder="Título ...">
-					</div>
-				</form>
-
-			</div>
-			<!-- /.box-body -->
-		</div>
-		<!-- /.box -->
-	</div>
-	<div class="col-md-4">
-		<div class="box">
+	<div class="col-md-6">
+		<div class="box collapsed-box">
 			<div class="box-header with-border">
 				<h3 class="box-title">Schema.org Google + Meta Tags</h3>
+				<div class="box-tools pull-right">
+					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+					</button>
+				</div>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -176,13 +130,20 @@
 
 			</div>
 			<!-- /.box-body -->
+			<div class="box-footer">
+				<button type="button" class="btn btn-info btn-flat pull-right agregar-meta-schema">Actualizar</button>
+			</div>
 		</div>
 		<!-- /.box -->
 	</div>
-	<div class="col-md-4">
-		<div class="box">
+	<div class="col-md-6">
+		<div class="box collapsed-box">
 			<div class="box-header with-border">
 				<h3 class="box-title">Twitter Tags</h3>
+				<div class="box-tools pull-right">
+					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+					</button>
+				</div>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -222,13 +183,20 @@
 
 			</div>
 			<!-- /.box-body -->
+			<div class="box-footer">
+				<button type="button" class="btn btn-info btn-flat pull-right agregar-meta-twitter">Actualizar</button>
+			</div>
 		</div>
 		<!-- /.box -->
 	</div>
-	<div class="col-md-4">
-		<div class="box">
+	<div class="col-md-6">
+		<div class="box collapsed-box">
 			<div class="box-header with-border">
 				<h3 class="box-title">Facebook Tags</h3>
+				<div class="box-tools pull-right">
+					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+					</button>
+				</div>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -273,13 +241,20 @@
 
 			</div>
 			<!-- /.box-body -->
+			<div class="box-footer">
+				<button type="button" class="btn btn-info btn-flat pull-right agregar-meta-facebook">Actualizar</button>
+			</div>
 		</div>
 		<!-- /.box -->
 	</div>
-	<div class="col-md-4">
-		<div class="box">
+	<div class="col-md-6">
+		<div class="box collapsed-box">
 			<div class="box-header with-border">
 				<h3 class="box-title">Google Robot Tag</h3>
+				<div class="box-tools pull-right">
+					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+					</button>
+				</div>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -409,6 +384,11 @@
 			formData.append('author_id', $('#author_id').val());
 			formData.append('excerpt', $('#excerpt').val());
 			formData.append('content', CKEDITOR.instances['content'].getData());
+			for (var i = 0; i < $('#etiquetas').select2('data').length; i++) {
+				formData.append('etiqueta-'+i, $('#etiquetas').select2('data')[i].id);
+			}
+			formData.append('etiquetasCount', i);
+			formData.append('categoria', $('#categoria').select2('data'));
 
 			$.ajax({
 				type: "POST",
@@ -431,8 +411,9 @@
 			agregarRegistro();
 		});
 		$('.seleccionar').click(function(){
-			$('.img_preview').html('<img src="' + $(this).prop('src') + '" style="width:100%; max-height:275px" alt="">');
+			$('.img_preview').html('<img src="' + $(this).prop('src') + '" style="width:100%; max-height:245px" alt="">');
 			$('#image_id').val($(this).prop('name'));
+			$('#modal').modal('hide');
 		});
 	});
 

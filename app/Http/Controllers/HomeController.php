@@ -18,7 +18,7 @@ class HomeController extends Controller
 		$testimonials = Testimonial::orderBy('id','desc')->get();
 		$redesSociales = SocialNetwork::all();
 		$images = Media::paginate(6);
-		$entradas = Post::orderBy('id','desc')->get();
+		$entradas = Post::orderBy('id','desc')->take(6)->get();
 		return view('page.index',compact('skills','images','redesSociales','testimonials','entradas'));
 	}
 }
