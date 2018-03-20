@@ -1,6 +1,6 @@
 @include('page.partials.blog-head')
 @include('page.partials.preloader')
-@include('page.partials.menu')
+@include('page.partials.blog-menu')
 @include('page.partials.blog-header')
 
 @include('page.partials.blog-layout1')
