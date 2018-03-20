@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<h1>Subscriptores</h1>
+<h1>Entradas</h1>
 @stop
 
 @section('content')
@@ -17,30 +17,31 @@
 			<!-- /.box-header -->
 			<div class="box-body">
 
-				<form role="form">
+				<form id="formulario">
 					<!-- text input -->
 					<div class="form-group">
 						<label>Título</label>
-						<input type="text" class="form-control" placeholder="Título ...">
+						<input type="hidden" id="image_id" name="image_id" >
+						<input type="hidden" id="author_id" name="author_id" >
+						<input type="text" class="form-control" id="title" name="title" placeholder="Título ...">
 					</div>
 					<!-- text input -->
 					<div class="form-group">
 						<label>URL SEO Friendly</label>
-						<input type="text" class="form-control" placeholder="URL ...">
+						<input type="text" class="form-control" id="url_friendly" name="url_friendly" placeholder="URL ...">
 					</div>
 					<!-- textarea -->
 					<div class="form-group">
 						<label>Resúmen (Excerpt)</label>
-						<textarea class="form-control" rows="4" placeholder="Resúmen..."></textarea>
+						<textarea class="form-control" id="excerpt" name="excerpt" rows="4" placeholder="Resúmen..."></textarea>
 					</div>
-
 					<!-- textarea -->
 					<div class="form-group">
 						<label>Contenido</label>
-						<textarea class="form-control" id="content" rows="3" placeholder="Resúmen..."></textarea>
+						<textarea class="form-control" id="content" name="content" rows="3" placeholder="Contenido..."></textarea>
 					</div>
 					<div class="box-footer">
-						<button type="button" class="btn btn-info btn-flat pull-right">Actualizar</button>
+						<button type="button" class="btn btn-info btn-flat pull-right agregar">Actualizar</button>
 					</div>
 				</form>
 
@@ -62,7 +63,6 @@
 					<div class="form-group">
 						<label>Imágen Destacada</label>
 						<div class="img_preview" style="width: 100%;border-style: dashed; border-color: #CECECD; height: 280px"></div>
-						<input type="hidden" name="featured_image" id="featured_image" class="form-control" placeholder="Título ...">
 					</div>
 					<div class="box-footer">
 						<button type="button" class="btn btn-info btn-flat pull-right mostrar_modal">Seleccionar Imágen</button>
@@ -378,12 +378,12 @@
 
 @section('js')
 
-<script src="{{ asset('vendor/adminlte/dist/js/pages/dashboard.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/ckeditor/ckeditor.js') }}"></script>
-<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 	
 	$(function () {
+		$('#author_id').val('{{Auth::user()->id}}')
 
 		$.ajaxSetup({
 			headers: {
@@ -391,17 +391,49 @@
 			}
 		});
 
-		$('.mostrar_modal').click(function(){
-			$('#modal').modal('show');
-		});
-		$('.seleccionar').click(function(){
-			$('.img_preview').html('<img src="' + $(this).prop('src') + '" style="width:100%; max-height:275px" alt="">');
-			$('#featured_image').val($(this).prop('name'));
-		});
+
 
 		$('.select2').select2()
 		$('.site').val('{!! config('app.name') !!}')
 		CKEDITOR.replace('content')
+
+
+		function agregarRegistro(){
+			
+			var formData = new FormData();
+
+			formData.append('title', $('#title').val());
+			formData.append('url_friendly', $('#url_friendly').val());
+			formData.append('author_id', $('#author_id').val());
+			formData.append('image_id', $('#image_id').val());
+			formData.append('author_id', $('#author_id').val());
+			formData.append('excerpt', $('#excerpt').val());
+			formData.append('content', CKEDITOR.instances['content'].getData());
+
+			$.ajax({
+				type: "POST",
+				url: '{{ action('PostController@agregarRegistro')}}',
+				data: formData,
+				processData: false,
+				contentType: false,
+				success: function (data) {
+					console.log(data)
+				},
+				error: function (data) {
+					console.log('Error:', data);
+				}
+			});
+		}
+		$('.mostrar_modal').click(function(){
+			$('#modal').modal('show');
+		});
+		$('.agregar').click(function(){
+			agregarRegistro();
+		});
+		$('.seleccionar').click(function(){
+			$('.img_preview').html('<img src="' + $(this).prop('src') + '" style="width:100%; max-height:275px" alt="">');
+			$('#image_id').val($(this).prop('name'));
+		});
 	});
 
 </script>

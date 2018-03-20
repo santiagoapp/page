@@ -13,6 +13,7 @@
 <script>
 	$(function(){
 		var asd = '{{url("img/home-bg.jpg")}}'
-		$('#home').css({'background':'url('+ asd +')'})
+		$('#blog-header').css({'background':'url('+ asd +')'})
 	});
 </script>
+

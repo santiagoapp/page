@@ -93,7 +93,7 @@ return [
 
     'login_url' => 'login',
 
-    'register_url' => 'register',
+    'register_url' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -108,80 +108,66 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
+        'NAVEGACIÓN PRINCIPAL',
         [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text'        => 'Panel General',
+            'url'         => '/admin',
+            'icon'        => 'dashboard',
         ],
         [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'        => 'Analytics',
+            'url'         => '/analytics',
+            'icon'        => 'bar-chart',
         ],
-        'ACCOUNT SETTINGS',
+        'CONFIGURACIÓN DE LA PÁGINA',
         [
-            'text' => 'Profile',
-            'url'  => 'admin/settings',
+            'text' => 'Landing Page',
+            'url'  => 'admin/pagina',
+            'icon' => 'cogs',
+        ],
+        [
+            'text' => 'Testimonials',
+            'url'  => 'admin/testimonial',
+            'icon' => 'comments-o',
+        ],
+        'GALERÍA',
+        [
+            'text' => 'Gestor de imágenes',
+            'url'  => 'admin/media',
+            'icon' => 'file-photo-o',
+        ],
+        'BLOG',
+        [
+            'text' => 'Entradas',
+            'url'  => 'admin/entradas',
+            'icon' => 'pencil-square-o',
+        ],
+        [
+            'text' => 'Categorías',
+            'url'  => 'admin/categorias',
             'icon' => 'user',
         ],
         [
-            'text' => 'Change Password',
-            'url'  => 'admin/settings',
-            'icon' => 'lock',
+            'text' => 'Etiquetas',
+            'url'  => 'admin/etiquetas',
+            'icon' => 'tags',
+        ],
+        'SUBSCRIPTORES',
+        [
+            'text' => 'Subscriptores',
+            'url'  => 'admin/subscriptores',
+            'icon' => 'user',
         ],
         [
-            'text'    => 'Multilevel',
-            'icon'    => 'share',
-            'submenu' => [
-                [
-                    'text' => 'Level One',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'Level One',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'Level Two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'Level Two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'Level One',
-                    'url'  => '#',
-                ],
-            ],
+            'text' => 'Mensajes',
+            'url'  => 'admin/mensajes',
+            'icon' => 'comments-o',
         ],
-        'LABELS',
+        'CUENTA DE USUARIO',
         [
-            'text'       => 'Important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'Warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'Information',
-            'icon_color' => 'aqua',
+            'text' => 'Pefíl',
+            'url'  => 'admin/perfil',
+            'icon' => 'user',
         ],
     ],
 

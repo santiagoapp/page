@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('excerpt')->nullable();
             $table->string('status')->default('Inactivo');
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->foreign('author_id')->references('id')->on('users');
             $table->foreign('image_id')->references('id')->on('media');
 

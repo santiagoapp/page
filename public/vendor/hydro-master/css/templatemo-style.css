@@ -553,7 +553,9 @@ body {
       .blog-info {
         padding: 75px 25px;
       }
-
+      .imagen-principal {
+        margin-bottom: 25px;
+      }
       .blog-info h3 {
         margin: 0;
         padding: 8px 0 6px 0;

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\SocialNetwork;
+use App\Media;
+use App\User;
 
 class ProfileController extends Controller
 {
@@ -14,19 +16,20 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $redesSociales = SocialNetwork::all();
-        return view('dashboard.perfil', compact('redesSociales'));
+        $imagenes = Media::orderBy('id','desc')->get();
+        return view('dashboard.perfil', compact('imagenes'));
     }
-    public function actualizarRedes(Request $request)
+    public function editarRegistro(Request $request)
     {
-
-        $tag = SocialNetwork::findOrFail($request->id);
-        $tag->name = $request->name;
-        $tag->slug = $request->slug;
-        $tag->save();
-        return response()->json($tag);
+        $user = User::findOrFail($request->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->image_id <> '') {
+            $user->image_id = $request->image_id;
+        }
+        $user->save();
+        return response()->json($user);
     }
-
     /**
      * Show the form for creating a new resource.
      *

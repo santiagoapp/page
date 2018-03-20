@@ -30,6 +30,20 @@ class PostController extends Controller
         return view('dashboard.nuevo-post',compact('imagenes'));
     }
 
+    public function agregarRegistro(Request $request)
+    {
+        $post = New Post;
+        $post->title = $request->title;
+        $post->url_friendly = $request->url_friendly;
+        $post->author_id = $request->author_id;
+        if ($request->image_id <> '') {
+            $post->image_id = $request->image_id;
+        }
+        $post->excerpt = $request->excerpt;
+        $post->content = $request->content;
+        $post->save();
+        return response()->json($post);
+    }
     /**
      * Store a newly created resource in storage.
      *

@@ -27,16 +27,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function testimonial()
-    {
-        $this->hasMany('App\Testimonial');
-    }
     public function post()
     {
-        $this->hasMany('App\Post');
+        return $this->hasMany('App\Post');
     }
-    public function image()
+    public function imagen()
     {
-        $this->hasOne('App\Media');
+        return $this->hasOne('App\Media', 'id','image_id');
     }
 }

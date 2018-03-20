@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Testimonial extends Model
 {
-	public function user()
+	public function imagen()
 	{
-		$this->belongsTo('App\User');
+		return $this->hasOne('App\Media','id','image_id');
 	}
 }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Skill;
-use App\Media;
+use App\Post;
 use App\SocialNetwork;
+
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -16,10 +16,6 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $skills = Skill::all();
-        $redesSociales = SocialNetwork::all();
-        $images = Media::paginate(6);
-        return view('page.blog',compact('skills','images','redesSociales'));
     }
 
     /**
@@ -51,7 +47,12 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+    }
+    public function post($id)
+    {
+        $redesSociales = SocialNetwork::all();
+        $post = Post::findOrFail($id);
+        return view('page.blog',compact('post','redesSociales'));
     }
 
     /**

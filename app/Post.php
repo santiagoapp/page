@@ -6,20 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-	public function author()
+	public function autor()
 	{
-		$this->belongsTo('App/User');
+		return $this->belongsTo('App\User','author_id','id');
 	}
-	public function image()
+	public function imagen()
 	{
-		$this->hasOne('App/Media');
+		return $this->hasOne('App\Media','id','image_id');
 	}
 	public function meta()
 	{
-		$this->hasOne('App/Meta');
+		return $this->hasOne('App\Meta');
 	}
 	public function tags()
 	{
-		$this->hasMany('App/TagHasPost');
+		return $this->hasMany('App\TagHasPost');
 	}
 }

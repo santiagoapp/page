@@ -16,12 +16,13 @@ class CreateTestimonialsTable extends Migration
         Schema::create('testimonials', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('author_id')->unsigned();
-            $table->string('company')->default('¡Un gran amigo!');
+            $table->integer('image_id')->nullable()->unsigned();
+            $table->string('author');
+            $table->string('cargo')->nullable();
+            $table->string('company');
             $table->text('content');
-            $table->boolean('approved')->default(false);
-            $table->foreign('author_id')->references('id')->on('users');
 
+            $table->foreign('image_id')->references('id')->on('media');
             $table->timestamps();
         });
     }

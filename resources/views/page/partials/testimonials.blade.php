@@ -9,19 +9,20 @@
                          <span class="line-bar">...</span>
                     </div>
                </div>
-
-               <div class="col-md-4" style="padding: 5px 5px 5px 5px; background:#ffffff" >
+               @foreach($testimonials as $testimonial)
+               <div class="col-md-4" style="padding: 5px; background:#ffffff; margin: 10px" >
                     <div class="card card-info" >
                          <div style="padding: 10px 20px 10px 20px; background:#ffffff">
-                              <img src="{{asset('img/users/descarga.svg')}}" style="border-radius:50%;width:100px;height: 100px;">
+                              <img src="{{asset($testimonial->imagen->path)}}" style="border-radius:50%;width:100px;height: 100px;">
                               <div class="card-block" >
-                                   <p class="card-text" style="color: #0577e5; font-size: 13px; margin-top: 10px;"><cite title="Source Title"><small>"Some quick example text to build on the card title and make up the bulk of the card's content".</small></cite> -Edgar Ferro
+                                   <p class="card-text" style="color: #0577e5; font-size: 13px; margin-top: 10px;"><cite title="Source Title"><small>{{$testimonial->content}}</small></cite> -{{$testimonial->author}}
                                    </p>
                               </div>
-                              <small>Gerente General de <a href=""> Flexilatina de Colombia LTDA</a></small>
+                              <small>{{$testimonial->cargo}} - <a href=""> {{$testimonial->company}}</a></small>
                          </div>
                     </div>
                </div>
+               @endforeach
           </div>
      </div>
 </section>

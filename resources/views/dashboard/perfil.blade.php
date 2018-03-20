@@ -16,35 +16,18 @@
 		<!-- Profile Image -->
 		<div class="box box-primary">
 			<div class="box-body box-profile">
-				<img class="profile-user-img img-responsive img-circle" src="{{asset('vendor/adminlte/dist/img/avatar.png')}}" alt="User profile picture">
+				<div class="img_preview">
+					<img class="profile-user-img img-responsive img-circle" src="{{asset(Auth::user()->imagen->path)}}" alt="User profile picture">
+				</div>
 
-				<h3 class="profile-username text-center">Santiago Pereira</h3>
+				<h3 class="profile-username text-center">{{Auth::user()->name}}</h3>
 
-				<p class="text-muted text-center">Ingeniero Industrial</p>
 				<hr>
 				<div class="box-body">
-					<!-- form start -->
-					<form role="form" class="redes-sociales">
-						@foreach($redesSociales as $redsocial)
-						<input type="hidden" id="id-{{$redsocial->id}}" name="id-{{$redsocial->id}}">
-						<div class="form-group">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="{{$redsocial->name}}-checkbox" id="{{$redsocial->name}}-checkbox">
-									<span class="fa {{$redsocial->icon}}"></span>
-									{{$redsocial->name}}
-								</label>
-								<input type="text" class="form-control" name="{{$redsocial->name}}-url" id="{{$redsocial->name}}-url" placeholder="URL">
-							</div>
-						</div>
-						@endforeach
-					</form>
+					<button type="button" class="btn btn-primary btn-block btn-flat pull-right mostrar_modal">Actualizar Imágen</button>
+
 				</div>
 				<!-- /.box-body -->
-
-				<div class="box-footer">
-					<button type="button" class="btn btn-primary">Actualizar</button>
-				</div>
 
 			</div>
 			<!-- /.box-body -->
@@ -65,26 +48,21 @@
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
-				<form class="form-horizontal">
+				<form class="form-horizontal" id="formulario">
 					<div class="form-group">
 						<label for="inputName" class="col-sm-1 control-label">Nombre</label>
 
 						<div class="col-sm-11">
-							<input type="name" class="form-control" id="name" placeholder="Nombre">
+							<input type="hidden" id="id" name="id" >
+							<input type="hidden" id="image_id" name="image_id" >
+							<input type="name" class="form-control" id="name" name="name" placeholder="Nombre">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="email" class="col-sm-1 control-label">Correo</label>
 
 						<div class="col-sm-11">
-							<input type="email" class="form-control" id="email" placeholder="Correo Electrónico">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="skills" class="col-sm-1 control-label">Skills</label>
-
-						<div class="col-sm-11">
-							<input type="text" class="form-control" id="skills" name="skills" placeholder="Skills">
+							<input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico">
 						</div>
 					</div>
 					<div class="form-group">
@@ -97,7 +75,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-info">Enviar</button>
+							<button type="button" class="btn btn-info btn-flat pull-right guardar">Enviar</button>
 						</div>
 					</div>
 				</form>
@@ -113,7 +91,30 @@
 </div>
 <!-- /.row -->
 
-
+<div class="modal modal-info fade" id="modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Agregar Imágen</h4>
+			</div>
+			<div class="modal-body ">
+				<div class="row">
+					@foreach($imagenes as $imagen)
+					<div class="col-sm-3">
+						<img src="{{asset($imagen->path)}}" name="{{$imagen->id}}" class="seleccionar" style="width: 100%" alt="">
+					</div>
+					@endforeach
+				</div>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 @stop
 
 @section('css')
@@ -124,6 +125,10 @@
 
 <script>
 	$(function(){
+		$('#name').val('{{Auth::user()->name}}')
+		$('#email').val('{{Auth::user()->email}}')
+		$('#id').val('{{Auth::user()->id}}')
+
 		//bootstrap WYSIHTML5 - text editor
 		$('.textarea').wysihtml5({
 			"font-styles": true, 
@@ -133,21 +138,41 @@
 			"link": true, 
 			"image": false, 
 			"color": true 
-		});
-		@foreach($redesSociales as $redsocial)
-		
-		@if($redsocial->actived)
-		$("#{{$redsocial->name}}-checkbox").prop('checked',true)
-		$("#{{$redsocial->name}}-url").show();
-		@else
-		$("#{{$redsocial->name}}-checkbox").prop('checked',false)
-		$("#{{$redsocial->name}}-url").hide();		
-		@endif
-		$("#{{$redsocial->name}}-checkbox").click(function(){
-			$("#{{$redsocial->name}}-url").toggle();
+		});	
+
+
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
 		});
 
-		@endforeach
+		$('.guardar').click(function(){
+			editarUsuario()
+		});
+		$('.mostrar_modal').click(function(){
+			$('#modal').modal('show');
+		});
+		$('.seleccionar').click(function(){
+			$('.img_preview').html('<img class="profile-user-img img-responsive img-circle" src="' + $(this).prop('src') + '" alt="User profile picture">');
+
+			$('#image_id').val($(this).prop('name'));
+		});
+
+		function editarUsuario(){
+
+			$.ajax({
+				type: "POST",
+				url: '{{ action('ProfileController@editarRegistro')}}',
+				data: $('#formulario').serialize(),
+				success: function (data) {
+					location.reload();
+				},
+				error: function (data) {
+					console.log('Error:', data);
+				}
+			});
+		}
 
 	});
 

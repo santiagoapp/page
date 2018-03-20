@@ -38,19 +38,21 @@
 							<th>Autor</th>
 							<th>Excerpt</th>
 							<th>Fecha de creación</th>
+							<th>Fecha de Modificación</th>
 							<th>Accion</th>
 						</tr>
 						@foreach($entradas as $entrada)
 						<tr id="tr-{{$entrada->id}}">
 							<td>{{$entrada->id}}</td>
-							<td><img src="{{asset('$entrada->image->path')}}" alt="{{$entrada->image->alt}}" style="width: 70px; height: 70px;"></td>
+							<td><img src="{{asset($entrada->imagen->path)}}" alt="{{$entrada->imagen->alt}}" style="width: 70px; height: 70px;"></td>
 							<td>{{$entrada->title}}</td>
-							<td>{{$entrada->author->name}}</td>
+							<td>{{$entrada->autor->name}}</td>
 							<td>{{$entrada->excerpt}}</td>
 							<td>{{$entrada->created_at}}</td>
+							<td>{{$entrada->updated_at}}</td>
 							<td>
-								<a href="#" name="{{$entrada->id}}" class="eliminar"><span class="label label-danger">Eliminar</span></a>
-								<!-- <a href="#" name="{{$entrada->id}}" class="enviar"><span class="label label-info">Enviar Correo</span></a> -->
+								<button name="{{$entrada->id}}" type="button" class="btn btn-warning btn-flat eliminar"><span class="fa fa-trash"></span></button>
+
 							</td>
 						</tr>
 						@endforeach
