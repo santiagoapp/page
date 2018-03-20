@@ -31,7 +31,7 @@
 					<!-- textarea -->
 					<div class="form-group">
 						<label>Resúmen (Excerpt)</label>
-						<textarea class="form-control" rows="3" placeholder="Resúmen..."></textarea>
+						<textarea class="form-control" rows="4" placeholder="Resúmen..."></textarea>
 					</div>
 
 					<!-- textarea -->
@@ -41,6 +41,31 @@
 					</div>
 					<div class="box-footer">
 						<button type="button" class="btn btn-info btn-flat pull-right">Actualizar</button>
+					</div>
+				</form>
+
+			</div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</div>
+	<div class="col-md-4">
+		<div class="box">
+			<div class="box-header with-border">
+				<h3 class="box-title">Imagen Destacada</h3>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body">
+
+				<form role="form">
+					<!-- Select multiple-->
+					<div class="form-group">
+						<label>Imágen Destacada</label>
+						<div class="img_preview" style="width: 100%;border-style: dashed; border-color: #CECECD; height: 280px"></div>
+						<input type="hidden" name="featured_image" id="featured_image" class="form-control" placeholder="Título ...">
+					</div>
+					<div class="box-footer">
+						<button type="button" class="btn btn-info btn-flat pull-right mostrar_modal">Seleccionar Imágen</button>
 					</div>
 				</form>
 
@@ -171,7 +196,7 @@
 					<!-- text input -->
 					<div class="form-group">
 						<label>Site</label>
-						<input type="text" class="form-control" placeholder="Título ...">
+						<input type="text" class="form-control site" placeholder="Título ...">
 					</div>
 					<!-- text input -->
 					<div class="form-group">
@@ -237,7 +262,7 @@
 					<!-- text input -->
 					<div class="form-group">
 						<label>Site Name</label>
-						<input type="text" class="form-control" placeholder="Título ...">
+						<input type="text" class="form-control site" placeholder="Título ...">
 					</div>
 					<!-- text input -->
 					<div class="form-group">
@@ -319,10 +344,33 @@
 		</div>
 		<!-- /.box -->
 	</div>
-
-	
 </div>
 
+
+<div class="modal modal-info fade" id="modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Agregar Imágen</h4>
+			</div>
+			<div class="modal-body ">
+				<div class="row">
+					@foreach($imagenes as $imagen)
+					<div class="col-sm-3">
+						<img src="{{asset($imagen->path)}}" name="{{$imagen->id}}" class="seleccionar" style="width: 100%" alt="">
+					</div>
+					@endforeach
+				</div>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 @stop
 
 @section('css')
@@ -343,8 +391,16 @@
 			}
 		});
 
-		$('.select2').select2()
+		$('.mostrar_modal').click(function(){
+			$('#modal').modal('show');
+		});
+		$('.seleccionar').click(function(){
+			$('.img_preview').html('<img src="' + $(this).prop('src') + '" style="width:100%; max-height:275px" alt="">');
+			$('#featured_image').val($(this).prop('name'));
+		});
 
+		$('.select2').select2()
+		$('.site').val('{!! config('app.name') !!}')
 		CKEDITOR.replace('content')
 	});
 

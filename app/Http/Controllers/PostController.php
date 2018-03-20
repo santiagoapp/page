@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Media;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -25,7 +26,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.nuevo-post');
+        $imagenes = Media::orderBy('id','desc')->get();
+        return view('dashboard.nuevo-post',compact('imagenes'));
     }
 
     /**
