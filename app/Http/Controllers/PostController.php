@@ -7,6 +7,7 @@ use App\Media;
 use App\Category;
 use App\Tag;
 use App\TagHasPost;
+use App\Meta;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -54,13 +55,21 @@ class PostController extends Controller
         for ($i=0; $i < $request->etiquetasCount; $i++) { 
             $this->agregarEtiquetas($post->id,$request['etiqueta-' . $i]);
         }
-// foreach ($request->etiquetas as $key => $etiqueta) {
-//     $this->agregarEtiquetas($post->id,$request->$etiqueta->id);
-// }
+        $this->agregarMeta($post->id,$request->metaDescription);
 
-        // return response()->json($post);
-        // return response()->json($request['etiqueta-' . 1]);
         return response()->json($request);
+    }
+    public function agregarMeta($post_id,$metaDescription)
+    {
+        if (Meta::where('post_id',$post_id)->exists()) {
+            $meta = Meta::where('post_id',$post_id);
+        }else{
+            $meta = New Meta;
+            $meta->post_id = $post_id;
+        }
+        $meta->description = $metaDescription;
+        $meta->save();
+        return response()->json($meta);
     }
     public function agregarEtiquetas($post_id,$tag_id)
     {
@@ -69,6 +78,13 @@ class PostController extends Controller
         $tagsHasPost->tag_id = $tag_id;
         $tagsHasPost->save();
         return response()->json($tagsHasPost);
+    }
+    public function eliminar(Request $request)
+    {
+        $post = Post::findOrFail($request->id);
+        $post->tags()->delete() ? 1 : 0;
+        $respuesta = $post->delete() ? 1 : 0;
+        return $respuesta;
     }
     /**
      * Store a newly created resource in storage.
@@ -100,7 +116,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $result = Post::findOrFail($post);
+        $imagenes = Media::orderBy('id','desc')->get();
+        $categorias = Category::orderBy('id','desc')->get();
+        $etiquetas = Tag::orderBy('id','desc')->get();
+        return view('dashboard.nuevo-post',compact('imagenes','categorias','etiquetas','result'));
     }
 
     /**

@@ -9,7 +9,7 @@
                     <div id="typed-strings">
                         <p>!Hola!</p>
                         <p>Dale play al vídeo...</p>
-                        <p>¡Te va a interesar!</p>
+                        <p>¡Te va a encantar!</p>
                     </div>
                     <span id="typed"></span>
                     <h1><span class="auto-type"></span></h1>

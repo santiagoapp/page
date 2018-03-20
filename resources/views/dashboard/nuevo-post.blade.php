@@ -69,7 +69,7 @@
 							<!-- text input -->
 							<div class="form-group">
 								<label>Meta Description</label>
-								<textarea class="form-control" id="meta-description" name="meta-description" rows="4" placeholder="Meta descripción"></textarea>
+								<textarea class="form-control" id="metaDescription" name="metaDescription" rows="4" placeholder="Meta descripción"></textarea>
 							</div>
 						</div>
 						<div class="col-md-8">
@@ -89,7 +89,7 @@
 						</div>
 					</div>
 					<div class="box-footer">
-						<button type="button" class="btn btn-info btn-flat pull-right agregar">Actualizar</button>
+						<button type="button" class="btn btn-info btn-flat pull-right agregar">Guardar</button>
 					</div>
 				</form>
 
@@ -383,6 +383,7 @@
 			formData.append('image_id', $('#image_id').val());
 			formData.append('author_id', $('#author_id').val());
 			formData.append('excerpt', $('#excerpt').val());
+			formData.append('metaDescription', $('#metaDescription').val());
 			formData.append('content', CKEDITOR.instances['content'].getData());
 			for (var i = 0; i < $('#etiquetas').select2('data').length; i++) {
 				formData.append('etiqueta-'+i, $('#etiquetas').select2('data')[i].id);

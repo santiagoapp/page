@@ -11,10 +11,10 @@ class TagHasPost extends Model
 	
 	public function post()
 	{
-		return $this->belongsTo('App/Post');
+		return $this->belongsTo('App\Post');
 	}
 	public function tag()
 	{
-		return $this->belongsTo('App/Tag');
+		return $this->belongsTo('App\Tag');
 	}
 }

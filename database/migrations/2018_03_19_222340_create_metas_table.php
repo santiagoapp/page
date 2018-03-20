@@ -18,6 +18,7 @@ class CreateMetasTable extends Migration
             
             $table->integer('post_id')->unsigned();
             $table->string('description')->nullable();
+            $table->string('robot')->nullable();
             $table->string('schema_name')->nullable();
             $table->string('schema_description')->nullable();
             $table->string('schema_image')->nullable();

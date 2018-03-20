@@ -37,9 +37,9 @@
 							<th>Titulo</th>
 							<th>Autor</th>
 							<th>Excerpt</th>
-							<th>Fecha de creación</th>
-							<th>Fecha de Modificación</th>
-							<th>Accion</th>
+							<th style="width:15%">Fecha de creación</th>
+							<th style="width:15%">Fecha de Modificación</th>
+							<th style="width:15%">Accion</th>
 						</tr>
 						@foreach($entradas as $entrada)
 						<tr id="tr-{{$entrada->id}}">
@@ -57,7 +57,11 @@
 							<td>{{$entrada->created_at}}</td>
 							<td>{{$entrada->updated_at}}</td>
 							<td>
-								<button name="{{$entrada->id}}" type="button" class="btn btn-warning btn-flat eliminar"><span class="fa fa-trash"></span></button>
+								<div class="btn-group">
+									<a href="{{action('BlogController@post',$entrada->id)}}" target="_blank" name="{{$entrada->id}}" type="button" class="btn btn-info ver"><span class="fa fa-eye"></span></a>
+									<a href="{{action('PostController@edit',$entrada->id)}}" name="{{$entrada->id}}" type="button" class="btn btn-info editar"><span class="fa fa-edit"></span></a>
+									<button name="{{$entrada->id}}" type="button" class="btn btn-warning eliminar"><span class="fa fa-trash"></span></button>
+								</div>
 
 							</td>
 						</tr>
@@ -78,9 +82,7 @@
 
 @section('js')
 
-<script src="{{ asset('vendor/adminlte/dist/js/pages/dashboard.js') }}"></script>
-<!-- <script src="{{ asset('vendor/adminlte/vendor/ckeditor/ckeditor.js') }}"></script> -->
-<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 
 	$(function () {
@@ -90,7 +92,52 @@
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			}
 		});
+		$('.eliminar').click(function () {
+			var id_boton = $(this).prop("name");
+			swal({
+				title: "¿Está seguro de eliminar el registro?",
+				text: "Una vez eliminado no podrá recuperar la información!",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+				buttons: ["Cancelar", "Continuar"],
+			})
+			.then((willDelete) => {
+				if (willDelete) {
+					eliminarRegistro(id_boton);
+				}
+			});
+		});
+		function eliminarRegistro(id_boton){
 
+			$.ajax({
+				type: "POST",
+				url: '{{ action('PostController@eliminar')}}',
+				data:{
+					"id" : id_boton
+				},
+				success: function (data) {
+					if (data==1) 
+					{
+						$('#tr-' + id_boton).remove();
+						swal({
+							title: ":D",
+							text: "Registro eliminado con éxito",
+							icon: "success"
+						});
+					}else{
+						swal({
+							title: ":c",
+							text: "El registro no pudo ser eliminado",
+							icon: "warning"
+						});
+					}
+				},
+				error: function (data) {
+					console.log('Error:', data);
+				}
+			});
+		}
 	});
 
 </script>

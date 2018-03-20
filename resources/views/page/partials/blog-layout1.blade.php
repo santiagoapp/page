@@ -7,6 +7,9 @@
 				<!-- BLOG THUMB -->
 				<div class="blog-detail-thumb">
 					<div class="blog-image">
+						@if($post->imagen)
 						<img src="{!! asset($post->imagen->path) !!}" class="img-responsive imagen-principal" alt="{!! $post->imagen->alt !!}">
+						@else
+						@endif
 					</div>
 

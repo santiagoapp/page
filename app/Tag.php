@@ -8,6 +8,6 @@ class Tag extends Model
 {
 	public function tags()
 	{
-		return $this->hasMany('App/TagHasPost');
+		return $this->hasMany('App\TagHasPost');
 	}
 }
