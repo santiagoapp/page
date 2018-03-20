@@ -90,7 +90,11 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="{{asset(Auth::user()->imagen->path)}}" class="img-circle" alt="User Image">
+                    @if(Auth::user()->imagen_id == null)
+                    <img src="{{ asset('img/users/descarga.svg')}}" class="img-circle" alt="User Image">
+                    @else
+                    <img src="{{ asset(Auth::user()->imagen->path) }}" class="img-circle" alt="User Image">
+                    @endif
                 </div>
                 <div class="pull-left info">
                     <p>{{Auth::user()->name}}</p>

@@ -17,7 +17,11 @@
 		<div class="box box-primary">
 			<div class="box-body box-profile">
 				<div class="img_preview">
+					@if(Auth::user()->imagen_id == null)
+					<img class="profile-user-img img-responsive img-circle" src="{{ asset('img/users/descarga.svg')}}" alt="User profile picture">
+					@else
 					<img class="profile-user-img img-responsive img-circle" src="{{asset(Auth::user()->imagen->path)}}" alt="User profile picture">
+					@endif
 				</div>
 
 				<h3 class="profile-username text-center">{{Auth::user()->name}}</h3>
