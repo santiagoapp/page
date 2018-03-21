@@ -8,8 +8,8 @@
                 <div class="home-info">
                     <div id="typed-strings">
                         <p>!Hola!</p>
-                        <p>Dale play al vídeo...</p>
-                        <p>¡Te va a encantar!</p>
+                        <p>Dale<span class="fa fa-youtube-play" style="color:#ff0000;"></span> al vídeo...</p>
+                        <p>¡Te podría interesar!</p>
                     </div>
                     <span id="typed"></span>
                     <h1><span class="auto-type"></span></h1>

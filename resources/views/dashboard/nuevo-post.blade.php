@@ -23,6 +23,7 @@
 							<!-- text input -->
 							<div class="form-group">
 								<label>Título</label>
+								<input type="hidden" id="id" name="id" >
 								<input type="hidden" id="image_id" name="image_id" >
 								<input type="hidden" id="author_id" name="author_id" >
 								<input type="text" class="form-control" id="title" name="title" placeholder="Título ...">
